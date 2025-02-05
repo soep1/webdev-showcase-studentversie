@@ -18,5 +18,16 @@ html {
 }
 
 body {
+  /*display: flex;*/
   margin-bottom: 60px;
+  overflow:hidden;
+  color: #FFF;
+  background-color: rgba(0, 0, 0, 0.7);
+  background-image: url('../images/Landscape.jpg');
+  background-position: center;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-blend-mode: darken;
+  background-attachment: fixed;
 }
