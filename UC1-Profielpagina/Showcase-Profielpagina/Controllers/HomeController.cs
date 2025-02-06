@@ -17,8 +17,18 @@ namespace Showcase_Profielpagina.Controllers
         {
             return View();
         }
+        
+        public IActionResult Index_old()
+        {
+            return View();
+        }
 
         public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        public IActionResult AboutMe()
         {
             return View();
         }

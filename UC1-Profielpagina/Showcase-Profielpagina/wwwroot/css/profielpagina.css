@@ -109,7 +109,7 @@
 
 
 .person {
-    margin-top: 160px;
+    margin-top: 7%;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
@@ -122,7 +122,7 @@
 
 .person-call-sign {
     text-align: center; 
-    font-size: 70px;
+    font-size: 50px;
 }
 .person-bust {
     width: 300px;
@@ -131,4 +131,48 @@
     position: relative;
     margin-left: auto;
     margin-right: auto;
+}
+
+.rotate {
+    animation: rotation 5s linear infinite;
+    animation-play-state: paused;
+}
+
+.rotate:hover {
+    animation-play-state: running;
+}
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(359deg);
+    }
+}
+
+.scaling-textbox {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 30px;
+}
+
+@media only screen and (min-width: 800px) { /* Adjust breakpoint as needed */
+    
+    .scaling-textbox {
+        margin-top: 10%;
+        width: 28%;
+        bottom: 100px;
+    }
+
+    .order-desktop-0 {
+        order: -1;
+    }
+
+    .person-call-sign {
+        text-align: center;
+        font-size: 70px;
+    }
 }
