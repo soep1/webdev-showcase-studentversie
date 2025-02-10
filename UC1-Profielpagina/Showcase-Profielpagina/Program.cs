@@ -21,11 +21,11 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=index}/{id?}");
+    "default",
+    "{controller=Home}/{action=index}/{id?}");
 
 app.MapControllerRoute(
-    name: "team",
-    pattern: "{controller=Team}/{action=Topteam}/{id?}");
+    "team",
+    "{controller=Team}/{action=Topteam}/{id?}");
 
 app.Run();

@@ -1,41 +1,41 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 
-  display: grid;
-  grid-template-rows: auto 1fr auto;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
 }
 
 body {
 
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  color: #FFF;
-  background-color: rgba(0, 0, 0, 0.7);
-  background-image: url('../images/Landscape.jpg');
-  background-position: center;
-  height: 100vh;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-blend-mode: darken;
-  background-attachment: fixed;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    color: #FFF;
+    background-color: rgba(0, 0, 0, 0.7);
+    background-image: url('../images/Landscape.jpg');
+    background-position: center;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-blend-mode: darken;
+    background-attachment: fixed;
 }
 
 .margin-left-right-0 {
-  margin-left: 0 !important;
-  margin-right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
 }

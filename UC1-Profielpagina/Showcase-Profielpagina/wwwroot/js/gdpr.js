@@ -1,24 +1,42 @@
 class GDPR {
 
     constructor() {
-        this.showStatus();
-        this.showContent();
-        this.bindEvents();
 
-        if(this.cookieStatus() !== 'accept') this.showGDPR();
+        if (window.location.pathname === "/Contact/Me") {
+            this.showStatus();
+            this.showContent();
+        }
+
+        if (this.cookieStatus() == null) {
+            this.insertGDPR();
+            this.bindEvents();
+        }
     }
 
     bindEvents() {
         let buttonAccept = document.querySelector('.gdpr-consent__button--accept');
         buttonAccept.addEventListener('click', () => {
             this.cookieStatus('accept');
-            this.showStatus();
-            this.showContent();
+
+            if (window.location.pathname === "/Contact/Me") {
+                this.showStatus();
+                this.showContent();
+            }
+
             this.hideGDPR();
         });
 
+        let buttonReject = document.querySelector('.gdpr-consent__button--reject');
+        buttonReject.addEventListener('click', () => {
+            this.cookieStatus('reject');
 
-//student uitwerking
+            if (window.location.pathname === "/Contact/Me") {
+                this.showStatus();
+                this.showContent();
+            }
+
+            this.hideGDPR();
+        });
 
 
     }
@@ -31,15 +49,13 @@ class GDPR {
 
     }
 
-    resetContent(){
+    resetContent() {
         const classes = [
             '.content-gdpr-accept',
-
-//student uitwerking
-
+            '.content-gdpr-reject',
             '.content-gdpr-not-chosen'];
 
-        for(const c of classes){
+        for (const c of classes) {
             document.querySelector(c).classList.add('hide');
             document.querySelector(c).classList.remove('show');
         }
@@ -59,15 +75,38 @@ class GDPR {
         return localStorage.getItem('gdpr-consent-choice');
     }
 
-//student uitwerking
+    insertGDPR() {
+        if (document.querySelector('.gdpr-consent')) return;
+
+        const gdprHTML = `
+            <section class="gdpr-consent">
+    
+                <div class="gdpr-consent__description">
+                    <p>
+                        Deze website gebruikt cookies.
+                        We gebruiken cookies om content te personaliseren, voor social media en het analyseren
+                        van verkeer op de website en voor advertenties.
+                    </p>
+                </div>
+    
+                <div class="gdpr-consent__choice">
+                    <button class="gdpr-consent__button--accept">Accepteren</button>
+                    <button class="gdpr-consent__button--reject">Weigeren</button>
+                </div>
+    
+            </section>
+        `;
+
+        document.body.insertAdjacentHTML('beforeend', gdprHTML);
+    }
 
 
-    hideGDPR(){
+    hideGDPR() {
         document.querySelector(`.gdpr-consent`).classList.add('hide');
         document.querySelector(`.gdpr-consent`).classList.remove('show');
     }
 
-    showGDPR(){
+    showGDPR() {
         document.querySelector(`.gdpr-consent`).classList.add('show');
     }
 

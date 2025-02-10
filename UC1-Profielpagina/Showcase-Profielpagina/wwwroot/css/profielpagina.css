@@ -83,10 +83,10 @@
         flex-direction: column;
     }
 
-        /*fix: anders als stipje zichtbaar*/
-        .profile-content__category--hidden-mobile hr {
-            width: 100%;
-        }
+    /*fix: anders als stipje zichtbaar*/
+    .profile-content__category--hidden-mobile hr {
+        width: 100%;
+    }
 
     .profile-content__element--hidden-mobile {
         display: flex;
@@ -118,12 +118,13 @@
 .person-affiliation {
     text-align: center;
     font-size: x-large;
- }
+}
 
 .person-call-sign {
-    text-align: center; 
+    text-align: center;
     font-size: 50px;
 }
+
 .person-bust {
     width: 300px;
     border-radius: 50%;
@@ -141,6 +142,7 @@
 .rotate:hover {
     animation-play-state: running;
 }
+
 @keyframes rotation {
     0% {
         transform: rotate(0deg);
@@ -159,8 +161,8 @@
     padding-top: 30px;
 }
 
-@media only screen and (min-width: 800px) { /* Adjust breakpoint as needed */
-    
+@media only screen and (min-width: 800px) {
+    /* Adjust breakpoint as needed */
     .scaling-textbox {
         margin-top: 10%;
         width: 28%;

@@ -17,14 +17,15 @@
     margin: 5px;
     border: 2px solid gray;
     border-radius: 15px 15px 15px 15px;
+    background-color: black;
 }
 
-.gdpr-consent__description{
+.gdpr-consent__description {
     display: flex;
     justify-content: center;
 }
 
-.gdpr-consent__choice{
+.gdpr-consent__choice {
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-evenly;
@@ -48,11 +49,15 @@
     border: 1px solid gray;
 }
 
-.hide{
+.gdpr-consent__button--reject:hover {
+    background-color: lightgray;
+}
+
+.hide {
     display: none;
 }
 
-.show{
+.show {
     display: block;
 }
 
