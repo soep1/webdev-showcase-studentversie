@@ -69,7 +69,7 @@ public class ContactController : Controller
         if(!response.IsSuccessStatusCode)
         {
             form.Message = "Er is iets misgegaan";
-            Console.WriteLine("Vieuwbag!"+form.Message);
+            Console.WriteLine("Vieuwbag!"+response.Content.ReadAsStringAsync().Result);
             return View(form);
         }
 
