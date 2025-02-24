@@ -2,7 +2,7 @@ class GDPR {
 
     constructor() {
 
-        if (window.location.pathname === "/Contact/Me") {
+        if (window.location.pathname === "/Home/Privacy") {
             this.showStatus();
             this.showContent();
         }
@@ -18,7 +18,7 @@ class GDPR {
         buttonAccept.addEventListener('click', () => {
             this.cookieStatus('accept');
 
-            if (window.location.pathname === "/Contact/Me") {
+            if (window.location.pathname === "/Home/Privacy") {
                 this.showStatus();
                 this.showContent();
             }
@@ -30,7 +30,7 @@ class GDPR {
         buttonReject.addEventListener('click', () => {
             this.cookieStatus('reject');
 
-            if (window.location.pathname === "/Contact/Me") {
+            if (window.location.pathname === "/Home/Privacy") {
                 this.showStatus();
                 this.showContent();
             }
