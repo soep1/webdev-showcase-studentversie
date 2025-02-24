@@ -39,7 +39,7 @@ namespace ShowcaseAPI.Controllers
             //sendgrid
         static async Task Execute(Contactform form)
         {
-            var apiKey = "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";
+            var apiKey = "";
             var client = new SendGridClient(apiKey);
             var from = new EmailAddress("janvandenpol11@gmail.com", form.FirstName+" "+form.LastName);
             var subject = form.Subject;
