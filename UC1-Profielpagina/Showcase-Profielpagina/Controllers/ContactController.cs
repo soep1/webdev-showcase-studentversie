@@ -20,6 +20,8 @@ public class ContactController : Controller
     public ActionResult Me()
     {
         Contactform contactform = new Contactform();
+        Console.WriteLine("hgello");
+        contactform.Message = "Hello World!";
         return View(contactform);
     }
     
@@ -28,8 +30,10 @@ public class ContactController : Controller
     [ValidateAntiForgeryToken]
     public async Task<ActionResult> Me(Contactform form)
     {
+        Console.WriteLine("wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww");
         if(!ModelState.IsValid)
         {
+            Console.WriteLine("ggggggggggggg");
             
             foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
             {
@@ -37,9 +41,11 @@ public class ContactController : Controller
             }
             
             form.Message = "De ingevulde velden voldoen niet aan de gestelde voorwaarden";
+            Console.WriteLine("Vieuwbag!!!!!!!!!!!!!!" +form.Message);
             return View(form);
         }
 
+        Console.WriteLine("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
         var settings = new JsonSerializerSettings
         {
             ContractResolver = new CamelCasePropertyNamesContractResolver()
@@ -55,17 +61,21 @@ public class ContactController : Controller
         //      nadat je een account hebt aangemaakt op Mailtrap (of een alternatief).
 
         
+        Console.WriteLine("aaaaahhhhhhhhhhhhhhhhh");
         HttpResponseMessage response = await _httpClient.PostAsync("/api/mail", content);
 
         
+        Console.WriteLine("aaaaabbbbbbbbbbbb");
         if(!response.IsSuccessStatusCode)
         {
             form.Message = "Er is iets misgegaan";
+            Console.WriteLine("Vieuwbag!"+form.Message);
             return View(form);
         }
 
         form.Message = "Het contactformulier is verstuurd";
         
+        Console.WriteLine("Vieuwbag!!!"+form.Message);
         return View(form);
     }
 }
