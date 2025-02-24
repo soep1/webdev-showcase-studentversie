@@ -20,8 +20,7 @@ public class ContactController : Controller
     public ActionResult Me()
     {
         Contactform contactform = new Contactform();
-        Console.WriteLine("hgello");
-        contactform.Message = "Hello World!";
+        Console.WriteLine("newPage");
         return View(contactform);
     }
     
@@ -30,10 +29,8 @@ public class ContactController : Controller
     [ValidateAntiForgeryToken]
     public async Task<ActionResult> Me(Contactform form)
     {
-        Console.WriteLine("wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww");
         if(!ModelState.IsValid)
         {
-            Console.WriteLine("ggggggggggggg");
             
             foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
             {
@@ -41,11 +38,10 @@ public class ContactController : Controller
             }
             
             form.Message = "De ingevulde velden voldoen niet aan de gestelde voorwaarden";
-            Console.WriteLine("Vieuwbag!!!!!!!!!!!!!!" +form.Message);
+            Console.WriteLine(form.Message);
             return View(form);
         }
 
-        Console.WriteLine("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
         var settings = new JsonSerializerSettings
         {
             ContractResolver = new CamelCasePropertyNamesContractResolver()
@@ -59,23 +55,19 @@ public class ContactController : Controller
         //Hint: je kunt dit met één regel code doen. Niet te moeilijk denken dus. :-)
         //Hint: vergeet niet om de mailfunctionaliteit werkend te maken in ShowcaseAPI > Controllers > MailController.cs,
         //      nadat je een account hebt aangemaakt op Mailtrap (of een alternatief).
-
         
-        Console.WriteLine("aaaaahhhhhhhhhhhhhhhhh");
         HttpResponseMessage response = await _httpClient.PostAsync("/api/mail", content);
-
         
-        Console.WriteLine("aaaaabbbbbbbbbbbb");
         if(!response.IsSuccessStatusCode)
         {
             form.Message = "Er is iets misgegaan";
-            Console.WriteLine("Vieuwbag!"+response.Content.ReadAsStringAsync().Result);
+            Console.WriteLine(response.Content.ReadAsStringAsync().Result);
             return View(form);
         }
 
         form.Message = "Het contactformulier is verstuurd";
         
-        Console.WriteLine("Vieuwbag!!!"+form.Message);
+        Console.WriteLine(form.Message);
         return View(form);
     }
 }

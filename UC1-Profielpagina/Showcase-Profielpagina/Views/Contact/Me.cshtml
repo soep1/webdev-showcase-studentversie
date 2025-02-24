@@ -44,7 +44,10 @@
             
             <div class="form-contactpagina__inputelement fx-col">
                 <label for="content">Inhoud: </label>
-                <input type="text" asp-for="Content" name="content" id="content" required>
+            </div>
+            
+            <div class="form-contactpagina__inputelement fx-col">
+                <textarea type="text" asp-for="Content" name="content" id="content" required></textarea>
             </div>
             
             <div class="form-contactpagina__inputelement">
@@ -133,7 +136,11 @@
                     console.log('Formulier succesvol ingediend:', data);
                     // Optioneel: je kunt hier een redirect uitvoeren of een succesbericht tonen
                     spinner.classList.add("hide");
-                    alert(@Model.Message);
+                    
+                    
+                    if (@Model.Message != null) {
+                        document.getElementById("status").innerHTML = @Model.Message;
+                    }
                 })
                 .catch(error => {
                     console.error('Er was een probleem met de formulierinzending:', error);
@@ -143,6 +150,5 @@
                     // Verwerk fouten hier
                 });
         });
-
 
     </script>

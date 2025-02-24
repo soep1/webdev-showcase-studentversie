@@ -46,7 +46,8 @@ namespace ShowcaseAPI.Controllers
             var to = new EmailAddress("janvandenpol11@gmail.com", "Jan van den Pol");
             var plainTextContent = "Sent by: "+form.FirstName+" "+form.LastName+"\nphone number: "+form.Phone+"\n\n"+form.Content;
             var htmlContent = $"<strong>{"Sent by: "+form.FirstName+" "+form.LastName}</strong>" +
-                                    $"<strong>{"  phone number: "+form.Phone}</strong>" +
+                                    $"<strong>{"  Phone number: "+form.Phone}</strong>" +
+                                    $"<strong>{"  Email: "+form.Email}</strong>" +
                                     $"<p>{form.Content}</p>";
             var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
             var response = await client.SendEmailAsync(msg);
