@@ -6,14 +6,15 @@
 <div class="container">
 
     <h1>Jan van den Pol</h1>
-
     <p>Deze pagina kan gebruikt worden om mij een e-mail te sturen.</p>
 
 
     <section class="contact">
 
         <h1>Mail Versturen</h1>
-        <p>@ViewBag.Message</p>
+        
+        <p id="status">@Model.Message</p>
+        
         <form method="post" class="form-contactpagina">
             
             <div class="form-contactpagina__inputelement fx-col">
@@ -28,22 +29,22 @@
 
             <div class="form-contactpagina__inputelement fx-col">
                 <label for="email">E-mailadres: </label>
-                <input type="email" asp-for="Email" name="email" id="email">
+                <input type="email" asp-for="Email" name="email" id="email" required>
             </div>
 
             <div class="form-contactpagina__inputelement fx-col">
                 <label for="phone">Telefoonnummer: </label>
-                <input type="tel" asp-for="Phone" name="phone" id="phone">
+                <input type="tel" asp-for="Phone" name="phone" id="phone" required>
             </div>
             
             <div class="form-contactpagina__inputelement fx-col">
                 <label for="subject">Onderwerp: </label>
-                <input type="text" asp-for="Subject" name="subject" id="subject">
+                <input type="text" asp-for="Subject" name="subject" id="subject" required>
             </div>
             
             <div class="form-contactpagina__inputelement fx-col">
                 <label for="content">Inhoud: </label>
-                <input type="text" asp-for="Content" name="content" id="content">
+                <input type="text" asp-for="Content" name="content" id="content" required>
             </div>
             
             <div class="form-contactpagina__inputelement">
@@ -91,12 +92,13 @@
         // Event listener voor formulierinzending
         form.addEventListener('submit', function (event) {
             event.preventDefault(); // Voorkom standaard formulierinzending
-            
-            const spinner = document.getElementById("spinner");
-            spinner.classList.remove("hide");
 
             // Valideer alle velden voor de zekerheid
             validateForm();
+            
+            // toon spinner
+             const spinner = document.getElementById("spinner");
+            spinner.classList.remove("hide");
 
             // Verkrijg CSRF-token van het formulier
             const csrfToken = document.querySelector('input[name="__RequestVerificationToken"]').value;
@@ -130,7 +132,11 @@
                     // Verwerk succesvolle formulierinzending
                     console.log('Formulier succesvol ingediend:', data);
                     // Optioneel: je kunt hier een redirect uitvoeren of een succesbericht tonen
-                    location.reload()
+            
+                    spinner.classList.add("hide");
+                    
+                
+            
                 })
                 .catch(error => {
                     console.error('Er was een probleem met de formulierinzending:', error);

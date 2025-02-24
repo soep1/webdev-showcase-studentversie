@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 namespace Showcase_Profielpagina.Models;
 
@@ -27,4 +28,7 @@ public class Contactform
     [Required]
     [StringLength(600)]
     public string Content { get; set; }
+    
+    [ValidateNever]
+    public string Message { get; set; }
 }

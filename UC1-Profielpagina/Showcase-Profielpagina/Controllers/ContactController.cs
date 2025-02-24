@@ -19,7 +19,8 @@ public class ContactController : Controller
     //GET
     public ActionResult Me()
     {
-        return View();
+        Contactform contactform = new Contactform();
+        return View(contactform);
     }
     
     // POST: ContactController
@@ -27,22 +28,18 @@ public class ContactController : Controller
     [ValidateAntiForgeryToken]
     public async Task<ActionResult> Me(Contactform form)
     {
-        Console.WriteLine("wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww");
         if(!ModelState.IsValid)
         {
-            Console.WriteLine("ggggggggggggg");
             
             foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
             {
                 Console.WriteLine(error.ErrorMessage);
             }
             
-            ViewBag.Message = "De ingevulde velden voldoen niet aan de gestelde voorwaarden";
-            Console.WriteLine("Vieuwbag!!!!!!!!!!!!!!");
-            return View();
+            form.Message = "De ingevulde velden voldoen niet aan de gestelde voorwaarden";
+            return View(form);
         }
 
-        Console.WriteLine("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
         var settings = new JsonSerializerSettings
         {
             ContractResolver = new CamelCasePropertyNamesContractResolver()
@@ -58,21 +55,17 @@ public class ContactController : Controller
         //      nadat je een account hebt aangemaakt op Mailtrap (of een alternatief).
 
         
-        Console.WriteLine("aaaaahhhhhhhhhhhhhhhhh");
         HttpResponseMessage response = await _httpClient.PostAsync("/api/mail", content);
 
         
-        Console.WriteLine("aaaaabbbbbbbbbbbb");
         if(!response.IsSuccessStatusCode)
         {
-            ViewBag.Message = "Er is iets misgegaan";
-            Console.WriteLine("Vieuwbag!");
-            return View();
+            form.Message = "Er is iets misgegaan";
+            return View(form);
         }
 
-        ViewBag.Message = "Het contactformulier is verstuurd";
+        form.Message = "Het contactformulier is verstuurd";
         
-        Console.WriteLine("Vieuwbag!!!");
-        return View();
+        return View(form);
     }
 }
