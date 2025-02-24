@@ -133,6 +133,7 @@
                     console.log('Formulier succesvol ingediend:', data);
                     // Optioneel: je kunt hier een redirect uitvoeren of een succesbericht tonen
                     spinner.classList.add("hide");
+                    alert(@Model.Message);
                 })
                 .catch(error => {
                     console.error('Er was een probleem met de formulierinzending:', error);

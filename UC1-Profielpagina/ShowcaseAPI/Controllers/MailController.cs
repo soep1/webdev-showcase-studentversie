@@ -41,11 +41,13 @@ namespace ShowcaseAPI.Controllers
         {
             var apiKey = "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";
             var client = new SendGridClient(apiKey);
-            var from = new EmailAddress(form.Email, form.FirstName+" "+form.LastName);
+            var from = new EmailAddress("janvandenpol11@gmail.com", form.FirstName+" "+form.LastName);
             var subject = form.Subject;
             var to = new EmailAddress("janvandenpol11@gmail.com", "Jan van den Pol");
-            var plainTextContent = form.Content;
-            var htmlContent = $"<strong>{form.Content}</strong>";
+            var plainTextContent = "Sent by: "+form.FirstName+" "+form.LastName+"\nphone number: "+form.Phone+"\n\n"+form.Content;
+            var htmlContent = $"<strong>{"Sent by: "+form.FirstName+" "+form.LastName}</strong>" +
+                                    $"<strong>{"  phone number: "+form.Phone}</strong>" +
+                                    $"<p>{form.Content}</p>";
             var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
             var response = await client.SendEmailAsync(msg);
         }
