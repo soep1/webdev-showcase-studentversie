@@ -22,7 +22,7 @@ jobs:
 
       - name: Build Docker image for Webserver
         run: |
-          docker build -t ghcr.io/soep1/profilepage:latest \
-            -f ./webdev-showcase-studentversie/UC1-Profielpagina/Showcase-Profielpagina/Dockerfile \
-            ./webdev-showcase-studentversie/UC1-Profielpagina/Showcase-Profielpagina
-          docker push ghcr.io/soep1/profilepage:latest
+          docker build -t ghcr.io/soep1/profilepage:latest -f ./webdev-showcase-studentversie/UC1-Profielpagina/Showcase-Profielpagina/Dockerfile .
+          docker push ghcr.io/soep1/ProfilePage:latest
+          
+          
