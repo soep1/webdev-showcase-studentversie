@@ -20,7 +20,6 @@ public class ContactController : Controller
     public ActionResult Me()
     {
         Contactform contactform = new Contactform();
-        Console.WriteLine("newPage");
         return View(contactform);
     }
     

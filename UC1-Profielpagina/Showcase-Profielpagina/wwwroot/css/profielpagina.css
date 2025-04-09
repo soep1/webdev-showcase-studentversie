@@ -178,8 +178,3 @@
         font-size: 70px;
     }
 }
-
-.workplace-grid {
-    display: grid;
-    grid-template-columns: auto auto auto;
-}

@@ -3,13 +3,14 @@
     ViewData["Title"] = "Contactpagina";
 }
 
-<div class="container">
-
-    <h1>Jan van den Pol</h1>
-    <p>Deze pagina kan gebruikt worden om mij een e-mail te sturen.</p>
-
-
-    <section class="contact">
+<div class="page">
+    <section class="scaling-textbox">
+        <h1>Jan van den Pol</h1>
+        <p>janvandenpol11@gmail.com</p>
+        <p><a href="https://www.linkedin.com/in/jan-van-den-pol-17402a30b/">LinkedIn</a></p>
+    </section>
+    
+    <section class="contact scaling-textbox">
 
         <h1>Mail Versturen</h1>
         
@@ -102,6 +103,7 @@
             // toon spinner
              const spinner = document.getElementById("spinner");
             spinner.classList.remove("hide");
+            
 
             // Verkrijg CSRF-token van het formulier
             const csrfToken = document.querySelector('input[name="__RequestVerificationToken"]').value;
@@ -136,7 +138,6 @@
                     console.log('Formulier succesvol ingediend:', data);
                     // Optioneel: je kunt hier een redirect uitvoeren of een succesbericht tonen
                     spinner.classList.add("hide");
-                    
                     
                     if (@Model.Message != null) {
                         document.getElementById("status").innerHTML = @Model.Message;
